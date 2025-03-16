@@ -1,53 +1,127 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate
+import { Sun, Moon, Menu, X } from 'lucide-react';
+import { useState } from 'react';
+import image from '../assets/images.png';
 
-const Navbar = () => {
+const Navbar = ({ darkMode, setDarkMode, toggleModal }) => {
+  const navigate = useNavigate(); // Initialize the navigate function
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // State for mobile menu toggle
+
+  // Handle Book Appointment button click
+  const handleBookAppointmentClick = () => {
+    toggleModal(); // Trigger modal toggle
+    navigate('/book-app'); // Navigate to /book-app
+  };
+
   return (
-    <div className="navbar bg-base-100 shadow-sm">
-      <div className="navbar-start">
-        <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> 
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
-            </svg>
-          </div>
-          <ul
-            tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+    <nav
+      className={`${
+        darkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-800'
+      } border-b border-red-500 px-4 md:px-6 py-3 shadow-md transition-colors duration-300`}
+    >
+      <div className="container mx-auto flex justify-between items-center">
+        {/* Logo */}
+        <Link to="/" className="flex items-center text-xl md:text-2xl font-extrabold">
+          <img src={image} alt="Logo" className="h-8 w-8 mr-2" />
+          Med<span className="text-red-500">Health</span>
+        </Link>
+
+        {/* Center Navigation Links */}
+        <div className="hidden lg:flex gap-6 text-sm">
+          <Link
+            key="home"
+            to="/"
+            className={`font-medium transition relative group ${
+              darkMode ? 'text-gray-300 hover:text-red-400' : 'text-gray-800 hover:text-red-500'
+            }`}
           >
-            <li><Link to="/">Item 1</Link></li>
-            <li>
-              <Link to="/parent">Parent</Link>
-              <ul className="p-2">
-                <li><Link to="/submenu1">Submenu 1</Link></li>
-                <li><Link to="/submenu2">Submenu 2</Link></li>
-              </ul>
-            </li>
-            <li><Link to="/item3">Item 3</Link></li>
-          </ul>
+            Home
+            <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-yellow-400 transition-all duration-300 group-hover:w-full" />
+          </Link>
+
+          {['Products', 'Features', 'About'].map((item) => (
+            <Link
+              key={item.toLowerCase()}
+              to={`/${item.toLowerCase()}`}
+              className={`font-medium transition relative group ${
+                darkMode ? 'text-gray-300 hover:text-red-400' : 'text-gray-800 hover:text-red-500'
+              }`}
+            >
+              {item}
+              <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-yellow-400 transition-all duration-300 group-hover:w-full" />
+            </Link>
+          ))}
         </div>
-        <Link to="/" className="btn btn-ghost text-xl">daisyUI</Link>
+
+        {/* Right Side */}
+        <div className="flex items-center gap-4">
+          {/* Dark Mode Toggle */}
+          <button
+            onClick={() => setDarkMode(!darkMode)}
+            className={`transition ${
+              darkMode ? 'text-gray-400 hover:text-gray-200' : 'text-gray-500 hover:text-gray-700'
+            }`}
+          >
+            {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+          </button>
+
+          {/* "Book Appointment" Button */}
+          <button
+            onClick={handleBookAppointmentClick}
+            className={`hidden md:block relative px-5 py-1.5 text-sm font-semibold rounded-full transition duration-300 border ${
+              darkMode
+                ? 'bg-gray-800 text-white border-red-500 hover:bg-red-500 hover:border-red-500'
+                : 'bg-white text-red-500 border-red-500 hover:bg-red-500 hover:text-white'
+            }`}
+          >
+            ➕ Book Appointment
+          </button>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="lg:hidden block transition"
+          >
+            {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+        </div>
       </div>
-      
-      <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          <li><Link to="/">Item 1</Link></li>
-          <li>
-            <details>
-              <summary>Parent</summary>
-              <ul className="p-2">
-                <li><Link to="/h2">Submenu 1</Link></li>
-                <li><Link to="/submenu2">Submenu 2</Link></li>
-              </ul>
-            </details>
-          </li>
-          <li><Link to="/item3">Item 3</Link></li>
-        </ul>
+
+      {/* Mobile Menu */}
+      <div
+        className={`lg:hidden fixed top-0 right-0 h-full w-64 bg-gray-900 text-white transform ${
+          isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+        } transition-transform duration-300 z-50`}
+      >
+        <div className="flex flex-col gap-6 mt-20 px-6">
+          <Link
+            to="/"
+            className="text-gray-300 hover:text-red-400 transition"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Home
+          </Link>
+          {['Products', 'Features', 'About'].map((item) => (
+            <Link
+              key={item.toLowerCase()}
+              to={`/${item.toLowerCase()}`}
+              className="text-gray-300 hover:text-red-400 transition"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              {item}
+            </Link>
+          ))}
+
+          {/* Book Appointment in Mobile View */}
+          <button
+            onClick={handleBookAppointmentClick}
+            className="mt-4 px-5 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition"
+          >
+            ➕ Book Appointment
+          </button>
+        </div>
       </div>
-      
-      <div className="navbar-end">
-        <Link to="/button" className="btn">Button</Link>
-      </div>
-    </div>
+    </nav>
   );
 };
 
