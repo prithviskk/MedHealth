@@ -55,12 +55,12 @@ const faqs = [
   },
 ];
 
-const HomePage = ({ darkMode }) => {
+const HomePage = ({ darkMode,toggleForm}) => {
   return (
     <div className={`${darkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-800'}`}>
       {/* Hero Section */}
       <div className="w-full">
-        <Hero />
+        <Hero toggleForm={toggleForm}/>
       </div>
 
       {/* Services Section */}
