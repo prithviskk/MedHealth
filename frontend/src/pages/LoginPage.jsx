@@ -54,7 +54,7 @@ const LoginPage = ({ isOpen, toggleModal, darkMode }) => {
 
     if (result.success) {
       toggleModal();
-      if (mode === 'login') navigate("/dashbord");
+      if (mode === 'login') navigate("/dashboard");
     } else {
       setErrorMsg(result.error || 'Authentication failed.');
     }

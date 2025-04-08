@@ -38,6 +38,18 @@ const Carousel = ({ images = [] }) => {
         'State-of-the-art lab tests and imaging with quick turnaround times for faster diagnosis.',
       button: 'Book a Test',
     },
+    {
+      title: 'Advanced Diagnostics',
+      description:
+        'State-of-the-art lab tests and imaging with quick turnaround times for faster diagnosis.',
+      button: 'Book a Test',
+    },
+    {
+      title: 'Advanced Diagnostics',
+      description:
+        'State-of-the-art lab tests and imaging with quick turnaround times for faster diagnosis.',
+      button: 'Book a Test',
+    },
   ];
 
   return (
