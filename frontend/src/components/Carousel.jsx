@@ -6,7 +6,7 @@ const Carousel = ({ images = [] }) => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % images.length);
-    }, 5000);
+    }, 4000);
 
     return () => clearInterval(interval);
   }, [images.length]);
@@ -23,65 +23,65 @@ const Carousel = ({ images = [] }) => {
     {
       title: 'Telemedicine',
       description:
-        'Video consultations, E-prescriptions, online payment, and chat support – all from your mobile or browser.',
+        'Platform for video consultations, E-prescriptions, online payment collection, and chat interactions via a mobile app or web browser.',
       button: 'Learn More',
     },
     {
       title: 'Emergency Care',
       description:
-        '24/7 emergency service with rapid ambulance dispatch and expert trauma support.',
+        'Round-the-clock emergency services with fast ambulance dispatch and expert trauma care.',
       button: 'Explore Services',
     },
     {
       title: 'Advanced Diagnostics',
       description:
-        'High-tech lab tests & imaging services with fast turnaround for early diagnosis.',
+        'State-of-the-art lab tests and imaging with quick turnaround times for faster diagnosis.',
       button: 'Book a Test',
     },
     {
-      title: 'Health Packages',
+      title: 'Advanced Diagnostics',
       description:
-        'Affordable health packages for preventive and annual check-ups.',
-      button: 'View Packages',
+        'State-of-the-art lab tests and imaging with quick turnaround times for faster diagnosis.',
+      button: 'Book a Test',
     },
     {
-      title: 'Doctor at Home',
+      title: 'Advanced Diagnostics',
       description:
-        'Consult top doctors from the comfort of your home with home visit options.',
-      button: 'Book Visit',
+        'State-of-the-art lab tests and imaging with quick turnaround times for faster diagnosis.',
+      button: 'Book a Test',
     },
   ];
 
   return (
-    <div className="relative w-full h-[400px] sm:h-[450px] md:h-[500px] overflow-hidden">
+    <div className="relative w-screen h-[400px] overflow-hidden">
       {/* Slider Content */}
       <div
         className="flex transition-transform duration-700 ease-in-out"
-        style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+        style={{
+          transform: `translateX(-${currentSlide * 100}%)`,
+        }}
       >
         {images.map((img, index) => (
-          <div key={index} className="w-full flex-shrink-0 h-full relative">
+          <div key={index} className="w-screen h-[400px] flex-shrink-0 relative">
             {/* Background Image */}
             <img
               src={img}
               alt={`Slide ${index + 1}`}
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-black/50" />
+            <div className="absolute inset-0 bg-black/40" />
 
-            {/* Overlay Content */}
-            <div className="absolute inset-0 flex items-center justify-center px-6 sm:px-10 text-center sm:text-left z-20">
-              <div className="max-w-xl">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 leading-snug">
-                  {slideContent[index]?.title}
-                </h2>
-                <p className="text-sm sm:text-base text-gray-300 mb-4">
-                  {slideContent[index]?.description}
-                </p>
-                <button className="px-4 py-2 sm:px-5 sm:py-2.5 bg-red-500 hover:bg-red-600 text-white rounded-full text-sm shadow-md transition duration-300">
-                  {slideContent[index]?.button}
-                </button>
-              </div>
+            {/* Dynamic Content */}
+            <div className="absolute left-12 sm:left-16 top-1/2 transform -translate-y-1/2 z-30 w-[90%] max-w-lg sm:max-w-md md:max-w-lg">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3">
+                {slideContent[index]?.title}
+              </h2>
+              <p className="text-sm sm:text-base md:text-lg text-gray-300 mb-4 leading-relaxed">
+                {slideContent[index]?.description}
+              </p>
+              <button className="px-5 py-2 bg-red-500 text-white rounded-full shadow-md hover:bg-red-600 transition duration-300">
+                {slideContent[index]?.button}
+              </button>
             </div>
           </div>
         ))}
@@ -90,26 +90,26 @@ const Carousel = ({ images = [] }) => {
       {/* Navigation Buttons */}
       <button
         onClick={prevSlide}
-        className="absolute left-3 top-1/2 -translate-y-1/2 bg-red-500 hover:bg-red-600 text-white rounded-full w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center z-30"
+        className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-red-500 hover:bg-red-700 text-white rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center z-40"
       >
         ❮
       </button>
       <button
         onClick={nextSlide}
-        className="absolute right-3 top-1/2 -translate-y-1/2 bg-red-500 hover:bg-red-600 text-white rounded-full w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center z-30"
+        className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-red-500 hover:bg-red-700 text-white rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center z-40"
       >
         ❯
       </button>
 
-      {/* Dots */}
-      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-30">
+      {/* Dot Indicators */}
+      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 z-40">
         {images.map((_, index) => (
-          <button
+          <div
             key={index}
-            onClick={() => setCurrentSlide(index)}
-            className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full ${
+            className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full cursor-pointer transition-all duration-300 ${
               index === currentSlide ? 'bg-red-500 scale-125' : 'bg-gray-300'
-            } transition-all duration-300`}
+            }`}
+            onClick={() => setCurrentSlide(index)}
           />
         ))}
       </div>
