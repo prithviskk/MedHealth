@@ -11,7 +11,7 @@ export const useAuthStore = create((set) => ({
   signup: async ({ fullName, email, username, password }) => {
     set({ isSigningUp: true });
     try {
-      const res = await axiosInstance.post('/auth/signup', {
+      const res = await axiosInstance.post('/api/auth/signup', {
         fullName,
         email,
         username,
@@ -37,7 +37,7 @@ export const useAuthStore = create((set) => ({
     console.log("Login payload:", { email, password });
     set({ isLoggingIn: true });
     try {
-      const res = await axiosInstance.post('/auth/login', { email, password });
+      const res = await axiosInstance.post('/api/auth/login', { email, password });
 
       const user = res.data.user;
       set({ isAuthenticated: true, user });
@@ -56,7 +56,7 @@ export const useAuthStore = create((set) => ({
 
   logout: async () => {
     try {
-      await axiosInstance.post('/auth/logout');
+      await axiosInstance.post('/api/auth/logout');
       set({ isAuthenticated: false, user: null });
       toast.success('Logged out successfully');
     } catch (error) {
