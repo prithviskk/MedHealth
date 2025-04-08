@@ -97,7 +97,7 @@ const HomePage = ({ darkMode,toggleForm}) => {
       </section>
 
       {/* Carousel Section */}
-      <div className="container ">
+      <div className="w-full px-4 sm:px-6 md:px-16 mx-auto">
         <Carousel  images={images}/>
       </div>
 

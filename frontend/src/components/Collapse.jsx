@@ -6,33 +6,37 @@ const Collapse = ({ title, content }) => {
 
   return (
     <div
-      className={`backdrop-blur-lg bg-white/10 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden transition-shadow duration-300 ${
+      className={`rounded-xl border transition-all duration-300 ${
         open ? 'shadow-lg' : 'shadow-sm'
-      }`}
+      } bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-700`}
     >
+      {/* Header */}
       <div
-        className="px-6 py-4 cursor-pointer flex justify-between items-center hover:bg-gray-100 dark:hover:bg-gray-700 transition"
+        className="px-5 py-4 flex justify-between items-center cursor-pointer group"
         onClick={() => setOpen(!open)}
       >
-        <span className="text-lg font-medium text-gray-800 dark:text-white">
+        <span className="text-base sm:text-lg font-semibold text-gray-800 dark:text-white">
           {title}
         </span>
         <span
-          className={`transform ${open ? 'rotate-180' : 'rotate-0'} transition-transform duration-300`}
+          className={`transition-transform duration-300 transform text-gray-500 dark:text-gray-300 ${
+            open ? 'rotate-180' : 'rotate-0'
+          }`}
         >
-          {open ? '▲' : '▼'}
+          ▼
         </span>
       </div>
 
+      {/* Content Area with Animated Height */}
       <div
         ref={contentRef}
-        className="overflow-hidden transition-[max-height] duration-500 ease-in-out"
+        className="overflow-hidden transition-[max-height] duration-500 ease-in-out border-t border-gray-200 dark:border-gray-600"
         style={{
           maxHeight: open ? `${contentRef.current?.scrollHeight}px` : '0',
         }}
       >
-        <div className="px-6 py-4 border-t border-gray-300 dark:border-gray-700">
-          <p className="text-gray-700 dark:text-gray-400">{content}</p>
+        <div className="px-5 py-4 text-sm sm:text-base text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-900">
+          {content}
         </div>
       </div>
     </div>
