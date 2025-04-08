@@ -13,11 +13,14 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
     cors({
-        origin:["http://localhost:5173", "https://med-health.vercel.app/"],
+        origin:["http://localhost:5173", "https://med-health.vercel.app"],
         credentials:true,
     })
 )
 
+app.get("/",(req,res)=>{
+    res.send("backend is running")
+})
 app.use("/api/auth",router);
 connectDb();
 app.listen(PORT, () => {
