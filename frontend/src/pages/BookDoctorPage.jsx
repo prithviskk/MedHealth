@@ -99,7 +99,10 @@ const BookDoctorPage = ({ darkMode, toggleModal }) => {
   const handleBookAppointment = (id) => {
     if (!isAuthenticated) {
       setShowAuthWarning(true);
-      toggleModal(); // invoke modal
+      setTimeout(() => {
+        toggleModal(); 
+      }, 1500); 
+  
     } else {
       navigate(`/book-appointment/${id}`);
     }
