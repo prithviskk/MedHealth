@@ -42,7 +42,7 @@ const Navbar = ({ darkMode, setDarkMode, toggleModal }) => {
             <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-yellow-400 transition-all duration-300 group-hover:w-full" />
           </Link>
 
-          {['Products', 'Features', 'About Us'].map((item) => (
+          {['Products', 'Services', 'About Us'].map((item) => (
             <Link
               key={item.toLowerCase()}
               to={`/${item.toLowerCase().replace(/ /g, '-')}`}
@@ -138,7 +138,7 @@ const Navbar = ({ darkMode, setDarkMode, toggleModal }) => {
             Home
           </Link>
 
-          {['Products', 'Features', 'About Us'].map((item) => (
+          {['Products', 'Services', 'About Us'].map((item) => (
             <Link
               key={item}
               to={`/${item.toLowerCase().replace(/ /g, '-')}`}

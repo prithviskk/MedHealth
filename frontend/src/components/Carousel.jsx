@@ -7,7 +7,6 @@ const Carousel = ({ images = [] }) => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % images.length);
     }, 4000);
-
     return () => clearInterval(interval);
   }, [images.length]);
 
@@ -39,31 +38,28 @@ const Carousel = ({ images = [] }) => {
       button: 'Book a Test',
     },
     {
-      title: 'Advanced Diagnostics',
+      title: 'Specialized Surgery',
       description:
-        'State-of-the-art lab tests and imaging with quick turnaround times for faster diagnosis.',
-      button: 'Book a Test',
+        'Minimally invasive procedures with experienced surgeons across specialties.',
+      button: 'See Treatments',
     },
     {
-      title: 'Advanced Diagnostics',
+      title: '24/7 Pharmacy',
       description:
-        'State-of-the-art lab tests and imaging with quick turnaround times for faster diagnosis.',
-      button: 'Book a Test',
+        'Order medicines online or pick them up anytime with our all-day pharmacy service.',
+      button: 'Order Now',
     },
   ];
 
   return (
-    <div className="relative w-screen h-[400px] overflow-hidden">
-      {/* Slider Content */}
+    <div className="relative w-full h-[400px] overflow-hidden">
+      {/* Slides Container */}
       <div
         className="flex transition-transform duration-700 ease-in-out"
-        style={{
-          transform: `translateX(-${currentSlide * 100}%)`,
-        }}
+        style={{ transform: `translateX(-${currentSlide * 100}%)` }}
       >
         {images.map((img, index) => (
-          <div key={index} className="w-screen h-[400px] flex-shrink-0 relative">
-            {/* Background Image */}
+          <div key={index} className="w-full flex-shrink-0 relative h-[400px]">
             <img
               src={img}
               alt={`Slide ${index + 1}`}
@@ -71,8 +67,8 @@ const Carousel = ({ images = [] }) => {
             />
             <div className="absolute inset-0 bg-black/40" />
 
-            {/* Dynamic Content */}
-            <div className="absolute left-12 sm:left-16 top-1/2 transform -translate-y-1/2 z-30 w-[90%] max-w-lg sm:max-w-md md:max-w-lg">
+            {/* Left-Aligned Content */}
+            <div className="absolute left-6 sm:left-10 md:left-16 top-1/2 transform -translate-y-1/2 text-left z-30 max-w-xl">
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3">
                 {slideContent[index]?.title}
               </h2>
@@ -87,16 +83,16 @@ const Carousel = ({ images = [] }) => {
         ))}
       </div>
 
-      {/* Navigation Buttons */}
+      {/* Navigation Arrows */}
       <button
         onClick={prevSlide}
-        className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-red-500 hover:bg-red-700 text-white rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center z-40"
+        className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 bg-red-500 hover:bg-red-700 text-white rounded-full w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center z-40"
       >
         ❮
       </button>
       <button
         onClick={nextSlide}
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-red-500 hover:bg-red-700 text-white rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center z-40"
+        className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 bg-red-500 hover:bg-red-700 text-white rounded-full w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center z-40"
       >
         ❯
       </button>
@@ -106,10 +102,10 @@ const Carousel = ({ images = [] }) => {
         {images.map((_, index) => (
           <div
             key={index}
+            onClick={() => setCurrentSlide(index)}
             className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full cursor-pointer transition-all duration-300 ${
               index === currentSlide ? 'bg-red-500 scale-125' : 'bg-gray-300'
             }`}
-            onClick={() => setCurrentSlide(index)}
           />
         ))}
       </div>
