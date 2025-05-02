@@ -1,5 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom'; 
 import { Sun, Moon, Menu, X } from 'lucide-react';
+import { FaRegHospital } from "react-icons/fa"
 import { useState } from 'react';
 import image from '../assets/images.png';
 import { useAuthStore } from '../store/useAuthStore.js';
@@ -26,7 +27,7 @@ const Navbar = ({ darkMode, setDarkMode, toggleModal }) => {
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo */}
         <Link to="/" className="flex items-center text-xl md:text-2xl font-extrabold">
-          <img src={image} alt="Logo" className="h-8 w-8 mr-2" />
+          <FaRegHospital  className='h-8 w-8 mr-2'/>
           Med<span className="text-red-500">Health</span>
         </Link>
 
