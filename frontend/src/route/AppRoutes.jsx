@@ -26,8 +26,8 @@ const AppRoutes = ({ darkMode, toggleModal, isModalOpen,toggleForm }) => {
       <Route path="/privacy-policy" element={<PrivacyPolicy darkMode={darkMode} />} />
       <Route path="/terms-of-service" element={<TermsAndConditions darkMode={darkMode} />} />
       <Route path="/book-appointment/:id" element={<BookAppointmentForm darkMode={darkMode} />} />
-      <Route path="/payment" element={<PaymentPage />} darkMode={darkMode} />
-      <Route path="/pharmacy-management" element={<PharmacyManag/>} darkMode={darkMode}/>
+      <Route path="/payment" element={<PaymentPage darkMode={darkMode}/>}  />
+      <Route path="/pharmacy-management" element={<PharmacyManag darkMode={darkMode}/>} />
     </Routes>
   );
 };

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import AppRoutes from './route/AppRoutes';
@@ -7,11 +8,15 @@ import PatientAppointmentForm from './components/AppointmentForm.jsx'
 
 const App = () => {
   const [darkMode, setDarkMode]=useState(false);
+  const location = useLocation();
   const [isModalOpen, setIsModalOpen]=useState(false);
   const [isFormOpen, setIsFormOpen]=useState(false);
   const toggleModal =()=>setIsModalOpen(!isModalOpen);
   const toggleForm=()=>setIsFormOpen(!isFormOpen);
   
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
   return (
     <div className={`${darkMode ? 'dark' : ''}`}>
       <div className={`${darkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-800'} min-h-screen flex flex-col`}>
