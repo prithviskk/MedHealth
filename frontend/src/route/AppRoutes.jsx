@@ -9,7 +9,9 @@ import ProductPage from '../pages/ProductPage.jsx'
 import Services from '../pages/Services.jsx'
 import BookDoctorPage from '../pages/BookDoctorPage.jsx';
 import LoginPaget from '../pages/LoginPaget.jsx';
-
+import BookAppointmentForm from '../components/BookAppointmentForm.jsx';
+import PaymentPage from '../pages/PaymentPage.jsx';
+import PharmacyManag from '../pages/PharmacyManag.jsx';
 const AppRoutes = ({ darkMode, toggleModal, isModalOpen,toggleForm }) => {
   return (
     <Routes>
@@ -23,6 +25,9 @@ const AppRoutes = ({ darkMode, toggleModal, isModalOpen,toggleForm }) => {
       <Route path="/form" element={<AppointmentForm darkMode={darkMode} />} />
       <Route path="/privacy-policy" element={<PrivacyPolicy darkMode={darkMode} />} />
       <Route path="/terms-of-service" element={<TermsAndConditions darkMode={darkMode} />} />
+      <Route path="/book-appointment/:id" element={<BookAppointmentForm darkMode={darkMode} />} />
+      <Route path="/payment" element={<PaymentPage />} darkMode={darkMode} />
+      <Route path="/pharmacy-management" element={<PharmacyManag/>} darkMode={darkMode}/>
     </Routes>
   );
 };

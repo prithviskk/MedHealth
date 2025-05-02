@@ -7,6 +7,8 @@ export const useAuthStore = create((set) => ({
   isLoggingIn: false,
   isAuthenticated: false,
   user: null,
+  redirectAfterLogin:null,
+  setRedirectAfterLogin: (path) => set({ redirectAfterLogin: path }),
 
   signup: async ({ fullName, email, username, password }) => {
     set({ isSigningUp: true });

@@ -1,90 +1,107 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';  // For navigation to the book-doctor endpoint
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import image1 from '../assets/book-doctor.webp';  // Add your images accordingly
+import image1 from '../assets/book-doctor.webp';
 import image2 from '../assets/pharmacy.webp';
 import image3 from '../assets/hospmanag.jpg';
 
 const Services = ({ darkMode }) => {
-  const navigate = useNavigate(); // For navigation to "book-doctor" endpoint
+  const navigate = useNavigate();
+
+  const textColor = darkMode ? "text-white" : "text-gray-800";
+  const bgColor = darkMode ? "bg-gray-900" : "bg-white";
 
   return (
-    <section className={`min-h-screen mx-auto px-6 py-10 transition-all duration-300 ${darkMode ? "bg-gray-900" : "bg-white"}`}>
+    <section className={`min-h-screen px-4 sm:px-6 py-10 ${bgColor} transition-all duration-300`}>
       <h2 className={`text-4xl font-bold text-center mb-12 ${darkMode ? "text-red-400" : "text-red-600"}`}>
         Our Services
       </h2>
 
-      {/* First Section - Image on left, Content on right */}
+      {/* Section 1 */}
       <motion.div
         whileHover={{ scale: 1.02 }}
-        className={`grid grid-cols-1 lg:grid-cols-2 gap-8 ${darkMode ? "text-white" : "text-gray-800"}`}
+        className={`grid grid-cols-1 lg:grid-cols-2 gap-8 items-center ${textColor}`}
       >
-        <div className="flex items-center justify-center">
-          <img src={image1} alt="Book a Doctor" className="w-[900px] h-[450px]" />
+        <div className="w-full">
+          <img
+            src={image1}
+            alt="Book a Doctor"
+            className="w-full h-auto max-h-[350px] object-cover rounded-lg"
+          />
         </div>
-        <div className="p-6 flex flex-col justify-center">
+        <div className="p-4">
           <h3 className="text-2xl font-semibold mb-4">Book a Doctor</h3>
-          <p className="text-lg mb-6 text-gray-600 dark:text-gray-300">
-            Easily book an appointment with the right doctor for your medical needs. Whether it's a routine checkup or an emergency, our platform provides quick access to various healthcare professionals across specialties. 
+          <p className="text-lg mb-4 text-gray-600 dark:text-gray-400">
+          Easily book an appointment with the right doctor for your medical needs. Whether it's a routine checkup or an emergency, our platform provides quick access to various healthcare professionals across specialties.
+
+We prioritize convenience and reliability by offering flexible time slots, real-time doctor availability, and instant confirmations. Our system also stores past consultation history for easy follow-ups and prescription tracking.
+
+You can explore doctor profiles, check patient reviews, and select based on experience.
           </p>
-          <p className="text-lg mb-6 text-gray-600 dark:text-gray-300">
-            We also provide additional services like telemedicine and home visits. Scheduling has never been easier, and you can choose the most convenient time and doctor for your appointment.
+          <p className="text-lg mb-4 text-gray-600 dark:text-gray-400">
+            We also provide additional services like telemedicine and home visits...
           </p>
           <button
             onClick={() => navigate('/book-doctor')}
-            className={`mt-4 py-2 px-6 rounded-full ${darkMode ? "bg-red-400 text-white" : "bg-red-600 text-white"} transition-colors duration-300`}
+            className={`mt-2 py-2 px-6 rounded-full ${darkMode ? "bg-red-400" : "bg-red-600"} text-white`}
           >
             Book Now
           </button>
         </div>
       </motion.div>
 
-
-{/* Second Section - Image on right, Content on left */}
-<motion.div
-  whileHover={{ scale: 1.02 }}
-  className={`flex flex-col lg:flex-row items-center justify-between gap-8 max-w-full  ${darkMode ? "bg-gray-900 text-white" : "bg-gray-100 text-gray-900"} mt-12 p-5`}
->
-  <div className="p-6 flex flex-col justify-center w-full lg:w-1/2">
-    <h3 className="text-2xl font-semibold mb-4">Pharmacy Management</h3>
-    <p className="text-lg mb-6 text-gray-800 dark:text-gray-300">
-      Manage your pharmacy's inventory, orders, and supplies with ease. Our pharmacy management system helps optimize stock control, reduce waste, and ensure that the most needed medicines are always in supply.
-    </p>
-    <p className="text-lg mb-6 text-gray-800 dark:text-gray-300">
-      In addition to managing inventory, our platform integrates with doctors' prescriptions and can generate automated order lists based on real-time inventory data, saving time and improving efficiency.
-    </p>
-    <button
-      onClick={() => navigate('/pharmacy-management')}
-      className={`mt-4 py-2 px-6 rounded-full ${darkMode ? "bg-red-400 text-white" : "bg-red-600 text-white"} transition-colors duration-300`}
-    >
-      Learn More
-    </button>
-  </div>
-  <div className="flex items-center justify-center w-full lg:w-1/2">
-    <img src={image2} alt="Pharmacy Management" className="w-full h-auto object-contain " />
-  </div>
-</motion.div>
-
-
-      {/* Third Section - Image on left, Content on right */}
+      {/* Section 2 */}
       <motion.div
         whileHover={{ scale: 1.02 }}
-        className={`grid grid-cols-1 lg:grid-cols-2 gap-8 ${darkMode ? "text-white" : "text-gray-800"} mt-12`}
+        className={`grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mt-12 p-4 ${darkMode ? "bg-gray-800 text-white" : "bg-gray-100 text-gray-900"} rounded-lg`}
       >
-        <div className="flex items-center justify-center">
-          <img src={image3} alt="Hospital Management" className="w-full h-72 object-cover" />
-        </div>
-        <div className="p-6 flex flex-col justify-center">
-          <h3 className="text-2xl font-semibold mb-4">Hospital Management</h3>
-          <p className="text-lg mb-6 text-gray-600 dark:text-gray-300">
-            Streamline hospital operations, from patient records to staff management. Our hospital management solution integrates various departments, ensuring smooth operations and efficient healthcare delivery.
+        <div className="p-4 order-2 lg:order-1">
+          <h3 className="text-2xl font-semibold mb-4">Pharmacy Management</h3>
+          <p className="text-lg mb-4 text-gray-800 dark:text-gray-400">
+            Manage your pharmacy's inventory, orders, and supplies with ease...
           </p>
-          <p className="text-lg mb-6 text-gray-600 dark:text-gray-300">
-            With real-time data on patient admissions, discharge status, and staff availability, our system empowers hospital managers to make informed decisions quickly, enhancing patient care and operational efficiency.
+          <p className="text-lg mb-4 text-gray-900 dark:text-gray-400">
+            Our platform integrates with doctors' prescriptions...
+          </p>
+          <button
+            onClick={() => navigate('/pharmacy-management')}
+            className={`mt-2 py-2 px-6 rounded-full ${darkMode ? "bg-red-400" : "bg-red-600"} text-white`}
+          >
+            Learn More
+          </button>
+        </div>
+        <div className="w-full order-1 lg:order-2">
+          <img
+            src={image2}
+            alt="Pharmacy Management"
+            className="w-full h-auto max-h-[350px] object-contain rounded-lg"
+          />
+        </div>
+      </motion.div>
+
+      {/* Section 3 */}
+      <motion.div
+        whileHover={{ scale: 1.02 }}
+        className={`grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mt-12 ${textColor}`}
+      >
+        <div className="w-full">
+          <img
+            src={image3}
+            alt="Hospital Management"
+            className="w-full h-auto max-h-[350px] object-cover rounded-lg"
+          />
+        </div>
+        <div className="p-4">
+          <h3 className="text-2xl font-semibold mb-4">Hospital Management</h3>
+          <p className="text-lg mb-4 text-gray-600 dark:text-gray-400">
+            Streamline hospital operations, from patient records to staff management...
+          </p>
+          <p className="text-lg mb-4 text-gray-600 dark:text-gray-400">
+            With real-time data on patient admissions, discharge status, and staff availability...
           </p>
           <button
             onClick={() => navigate('/hospital-management')}
-            className={`mt-4 py-2 px-6 rounded-full ${darkMode ? "bg-red-400 text-white" : "bg-red-600 text-white"} transition-colors duration-300`}
+            className={`mt-2 py-2 px-6 rounded-full ${darkMode ? "bg-red-400" : "bg-red-600"} text-white`}
           >
             Explore Now
           </button>

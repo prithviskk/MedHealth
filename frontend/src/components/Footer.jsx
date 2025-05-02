@@ -36,14 +36,14 @@ const Footer = ({ darkMode }) => {
             {['Emergency Care', 'Outpatient Services', 'Specialist Consultations', 'Health Checkups'].map(
               (item, index) => (
                 <li key={index}>
-                  <Link
-                    to={`/${item.toLowerCase().replace(/ /g, '-')}`}
+                  <a
+                    href="#"
                     className={`block text-xs transition ${
                       darkMode ? 'hover:text-red-400' : 'hover:text-red-500'
                     }`}
                   >
                     {item}
-                  </Link>
+                  </a>
                 </li>
               )
             )}
@@ -54,18 +54,46 @@ const Footer = ({ darkMode }) => {
         <div>
           <h6 className="font-bold text-sm text-red-500 mb-3">Company</h6>
           <ul className="space-y-1">
-            {['About Us', 'Careers', 'Contact', 'News & Events'].map((item, index) => (
-              <li key={index}>
-                <Link
-                  to={`/${item.toLowerCase().replace(/ /g, '-')}`}
-                  className={`block text-xs transition ${
-                    darkMode ? 'hover:text-red-400' : 'hover:text-red-500'
-                  }`}
-                >
-                  {item}
-                </Link>
-              </li>
-            ))}
+            <li>
+              <Link
+                to="/about-us"
+                className={`block text-xs transition ${
+                  darkMode ? 'hover:text-red-400' : 'hover:text-red-500'
+                }`}
+              >
+                About Us
+              </Link>
+            </li>
+            <li>
+              <a
+                href="#"
+                className={`block text-xs transition ${
+                  darkMode ? 'hover:text-red-400' : 'hover:text-red-500'
+                }`}
+              >
+                Careers
+              </a>
+            </li>
+            <li>
+              <Link
+                to="/contact"
+                className={`block text-xs transition ${
+                  darkMode ? 'hover:text-red-400' : 'hover:text-red-500'
+                }`}
+              >
+                Contact
+              </Link>
+            </li>
+            <li>
+              <a
+                href="#"
+                className={`block text-xs transition ${
+                  darkMode ? 'hover:text-red-400' : 'hover:text-red-500'
+                }`}
+              >
+                News & Events
+              </a>
+            </li>
           </ul>
         </div>
 
@@ -73,18 +101,46 @@ const Footer = ({ darkMode }) => {
         <div>
           <h6 className="font-bold text-sm text-red-500 mb-3">Legal</h6>
           <ul className="space-y-1">
-            {['Privacy Policy', 'Terms of Service', 'Patient Rights', 'Data Protection'].map((item, index) => (
-              <li key={index}>
-                <Link
-                  to={`/${item.toLowerCase().replace(/ /g, '-')}`}
-                  className={`block text-xs transition ${
-                    darkMode ? 'hover:text-red-400' : 'hover:text-red-500'
-                  }`}
-                >
-                  {item}
-                </Link>
-              </li>
-            ))}
+            <li>
+              <Link
+                to="/privacy-policy"
+                className={`block text-xs transition ${
+                  darkMode ? 'hover:text-red-400' : 'hover:text-red-500'
+                }`}
+              >
+                Privacy Policy
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/terms-of-service"
+                className={`block text-xs transition ${
+                  darkMode ? 'hover:text-red-400' : 'hover:text-red-500'
+                }`}
+              >
+                Terms of Service
+              </Link>
+            </li>
+            <li>
+              <a
+                href="#"
+                className={`block text-xs transition ${
+                  darkMode ? 'hover:text-red-400' : 'hover:text-red-500'
+                }`}
+              >
+                Patient Rights
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                className={`block text-xs transition ${
+                  darkMode ? 'hover:text-red-400' : 'hover:text-red-500'
+                }`}
+              >
+                Data Protection
+              </a>
+            </li>
           </ul>
         </div>
       </div>
