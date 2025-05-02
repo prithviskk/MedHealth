@@ -1,5 +1,5 @@
 import React from 'react';
-import image1 from '../assets/pngtree-team-or-group-of-doctors-and-nurses-students-png-image_10786107.png';
+import image1 from '../assets/doctors.png';
 import { useNavigate } from 'react-router-dom';
 
 const Hero = ({ toggleForm }) => {
