@@ -34,7 +34,7 @@ const doctors = [
     name: 'Dr. Vinod Patel',
     specialty: 'Cardiologist',
     experience: '15 years',
-    image: 'https://via.placeholder.com/150',
+    image: image1,
     description: 'Interventional cardiology and heart failure expert.',
   },
 
@@ -52,7 +52,7 @@ const doctors = [
     name: 'Dr. Deepak Lamba',
     specialty: 'Pediatrician',
     experience: '5 years',
-    image: 'https://via.placeholder.com/150',
+    image: image5,
     description: 'Focuses on immunization and nutrition.',
   },
   {
@@ -60,7 +60,7 @@ const doctors = [
     name: 'Dr. Neeru Bajaj',
     specialty: 'Pediatrician',
     experience: '8 years',
-    image: 'https://via.placeholder.com/150',
+    image: image8,
     description: 'Treats infants and adolescent growth conditions.',
   },
 
@@ -130,7 +130,7 @@ const doctors = [
     name: 'Dr. Shalini Menon',
     specialty: 'Orthopedic',
     experience: '7 years',
-    image: 'https://via.placeholder.com/150',
+    image: image4,
     description: 'Focus on sports injuries and rehab.',
   },
   {
@@ -138,7 +138,7 @@ const doctors = [
     name: 'Dr. Abhishek Joshi',
     specialty: 'Orthopedic',
     experience: '11 years',
-    image: 'https://via.placeholder.com/150',
+    image: image5,
     description: 'Spine and bone trauma specialist.',
   },
 
@@ -148,7 +148,7 @@ const doctors = [
     name: 'Dr. Neha Singh',
     specialty: 'Gynecologist',
     experience: '8 years',
-    image: 'https://via.placeholder.com/150',
+    image: image8,
     description: 'Women’s health and prenatal expert.',
   },
   {
@@ -156,7 +156,7 @@ const doctors = [
     name: 'Dr. Ritu Sinha',
     specialty: 'Gynecologist',
     experience: '10 years',
-    image: 'https://via.placeholder.com/150',
+    image: image7,
     description: 'Fertility treatments and menstrual issues.',
   },
   {
@@ -164,7 +164,7 @@ const doctors = [
     name: 'Dr. Meena Kapoor',
     specialty: 'Gynecologist',
     experience: '6 years',
-    image: 'https://via.placeholder.com/150',
+    image: image9,
     description: 'Specializes in obstetrics and delivery.',
   },
 
